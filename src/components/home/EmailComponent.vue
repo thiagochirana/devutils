@@ -61,7 +61,7 @@ export default defineComponent({
       navigator.clipboard.writeText(email.value)
     }
 
-    function randomizeName(names) {
+    function randomizeName(names: string[]): string {
       return names[Math.floor(Math.random() * names.length)]
     }
 

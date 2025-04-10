@@ -3,9 +3,9 @@
     <div class="flex flex-wrap items-center gap-2 justify-between mb-2">
       <h2 class="text-emerald-500 text-xl font-bold">CNPJ</h2>
       <div class="flex items-center gap-2">
-        <input type="checkbox" v-model="mascara" class="accent-green-600">
+        <input type="checkbox" v-model="mask" class="accent-green-600">
         <span>máscara</span>
-        <input type="checkbox" v-model="comLetras" class="ml-4 accent-green-600">
+        <input type="checkbox" v-model="withLetters" class="ml-4 accent-green-600">
         <span>alfanumérico</span>
       </div>
     </div>
@@ -13,8 +13,8 @@
       <p class="font-mono break-all">{{ cnpj }}</p>
     </div>
     <div class="flex items-center justify-between">
-      <button @click="gerarCnpj" class="bg-emerald-700 hover:bg-green-400 text-white px-4 py-1 rounded transition-colors cursor-pointer">GERAR</button>
-      <button @click="copiar" class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-0">COPIAR</button>
+      <button @click="generateCNPJ" class="bg-emerald-700 hover:bg-green-400 text-white px-4 py-1 rounded transition-colors cursor-pointer">GERAR</button>
+      <button @click="copy" class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-0">copy</button>
     </div>
   </section>
 </template>
@@ -24,12 +24,12 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    const mascara = ref(true)
-    const comLetras = ref(false)
+    const mask = ref(true)
+    const withLetters = ref(false)
     const cnpj = ref('00.111.222/0001-00')
 
-    function gerarCnpj() {
-      if (comLetras.value) {
+    function generateCNPJ() {
+      if (withLetters.value) {
         const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
         const prefix = Array.from({ length: 12 }, () =>
           letras[Math.floor(Math.random() * letras.length)]
@@ -44,19 +44,19 @@ export default defineComponent({
         const d2 = calcMod11([...values, d1], [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])
 
         const full = [...prefix, d1.toString(), d2.toString()].join('')
-        cnpj.value = mascara.value ? formatAlfaCnpj(full) : full
+        cnpj.value = mask.value ? formatAlfaCnpj(full) : full
       } else {
         const n = Array.from({ length: 12 }, () => Math.floor(Math.random() * 10))
         const d1 = calcMod11(n, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])
         const d2 = calcMod11([...n, d1], [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])
         const base = [...n, d1, d2].join('')
-        cnpj.value = mascara.value
+        cnpj.value = mask.value
           ? base.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5')
           : base
       }
     }
 
-    function calcMod11(arr: (number | string)[], pesos: number[]): number {
+    function calcMod11(arr: (number)[], pesos: number[]): number {
       const soma = arr.reduce((acc, val, i) => acc + Number(val) * pesos[i], 0)
       const resto = soma % 11
       return resto < 2 ? 0 : 11 - resto
@@ -66,11 +66,11 @@ export default defineComponent({
       return str.replace(/^(.{2})(.{3})(.{3})(.{4})(.{2})$/, '$1.$2.$3/$4-$5')
     }
 
-    function copiar() {
+    function copy() {
       navigator.clipboard.writeText(cnpj.value)
     }
 
-    return { mascara, comLetras, cnpj, gerarCnpj, copiar }
+    return { mask, withLetters, cnpj, generateCNPJ, copy }
   }
 })
 </script>
