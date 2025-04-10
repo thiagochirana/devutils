@@ -15,13 +15,13 @@
         @click="generateCPF"
         class="bg-emerald-700 hover:bg-green-400 text-white px-4 py-1 rounded transition-colors cursor-pointer"
       >
-        GERAR
+        GENERATE
       </button>
       <button
         @click="copy"
-        class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-0"
+        class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-green-500"
       >
-        copy
+        COPY
       </button>
     </div>
   </section>

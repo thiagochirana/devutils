@@ -13,7 +13,7 @@
       </button>
       <button
         @click="copiar"
-        class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-0"
+        class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-green-500"
       >
         COPY
       </button>

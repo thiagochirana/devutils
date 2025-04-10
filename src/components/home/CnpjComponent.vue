@@ -3,9 +3,9 @@
     <div class="flex flex-wrap items-center gap-2 justify-between mb-2">
       <h2 class="text-emerald-500 text-xl font-bold">CNPJ</h2>
       <div class="flex items-center gap-2">
-        <input type="checkbox" v-model="mask" class="accent-green-600">
+        <input type="checkbox" v-model="mask" class="accent-green-600" />
         <span>máscara</span>
-        <input type="checkbox" v-model="withLetters" class="ml-4 accent-green-600">
+        <input type="checkbox" v-model="withLetters" class="ml-4 accent-green-600" />
         <span>alfanumérico</span>
       </div>
     </div>
@@ -13,8 +13,18 @@
       <p class="font-mono break-all">{{ cnpj }}</p>
     </div>
     <div class="flex items-center justify-between">
-      <button @click="generateCNPJ" class="bg-emerald-700 hover:bg-green-400 text-white px-4 py-1 rounded transition-colors cursor-pointer">GERAR</button>
-      <button @click="copy" class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-0">copy</button>
+      <button
+        @click="generateCNPJ"
+        class="bg-emerald-700 hover:bg-green-400 text-white px-4 py-1 rounded transition-colors cursor-pointer"
+      >
+        GENERATE
+      </button>
+      <button
+        @click="copy"
+        class="border border-gray-200 px-2 py-1 rounded text-sm cursor-copy hover:bg-green-300 transition-colors hover:border-green-500"
+      >
+        COPY
+      </button>
     </div>
   </section>
 </template>
@@ -31,11 +41,12 @@ export default defineComponent({
     function generateCNPJ() {
       if (withLetters.value) {
         const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-        const prefix = Array.from({ length: 12 }, () =>
-          letras[Math.floor(Math.random() * letras.length)]
+        const prefix = Array.from(
+          { length: 12 },
+          () => letras[Math.floor(Math.random() * letras.length)],
         )
 
-        const values = prefix.map(c => {
+        const values = prefix.map((c) => {
           const code = c.charCodeAt(0)
           return code >= 65 ? code - 48 : parseInt(c) // A-Z = 17–42, 0–9 = 0–9
         })
@@ -56,7 +67,7 @@ export default defineComponent({
       }
     }
 
-    function calcMod11(arr: (number)[], pesos: number[]): number {
+    function calcMod11(arr: number[], pesos: number[]): number {
       const soma = arr.reduce((acc, val, i) => acc + Number(val) * pesos[i], 0)
       const resto = soma % 11
       return resto < 2 ? 0 : 11 - resto
@@ -71,6 +82,6 @@ export default defineComponent({
     }
 
     return { mask, withLetters, cnpj, generateCNPJ, copy }
-  }
+  },
 })
 </script>

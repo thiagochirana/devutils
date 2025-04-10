@@ -1,16 +1,20 @@
 <template>
-  <main class="w-[320px] h-[450px] bg-slate-100 p-2 rounded-xl space-y-4 overflow-y-auto">
+  <main class="w-[320px] h-[470px] bg-slate-100 p-2 space-y-4 overflow-y-auto">
     <EmailComponent />
     <CpfComponent />
     <CnpjComponent />
     <div class="flex justify-center">
       <a
-        href="https://github.com/seu-repo"
+        href="https://github.com/thiagochirana/devutils"
         target="_blank"
         rel="noopener noreferrer"
         class="flex items-center gap-1 transition"
       >
-        <img src="/github.svg" alt="GitHub" class="w-4 h-4 opacity-20 hover:opacity-100 transition" />
+        <img
+          src="/github.svg"
+          alt="GitHub"
+          class="w-4 h-4 opacity-20 hover:opacity-100 transition"
+        />
       </a>
     </div>
   </main>
