@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
+    "manifest": "cpx \"manifest.json\" dist/ && cpx \"public/icon.svg\" dist/",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
@@ -27,6 +28,7 @@
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.5.0",
     "@vue/tsconfig": "^0.7.0",
+    "cpx": "^1.5.0",
     "eslint": "^9.22.0",
     "eslint-plugin-vue": "~10.0.0",
     "jiti": "^2.4.2",
