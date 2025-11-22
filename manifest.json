@@ -1,24 +1,26 @@
 {
   "manifest_version": 3,
   "name": "DevUtils",
-  "description": "Utils para devs",
-  "version": "1.0",
+  "description": "Gerador simples de CNPJ, CPF e e-mail com cópia rápida.",
+  "version": "1.0.0",
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "popup.html",
     "default_icon": {
-      "16": "icon.svg",
-      "48": "icon.svg",
-      "128": "icon.svg"
+      "16": "assets/icon.svg",
+      "32": "assets/icon.svg",
+      "48": "assets/icon.svg",
+      "128": "assets/icon.svg"
     }
   },
   "icons": {
-    "16": "icon.svg",
-    "48": "icon.svg",
-    "128": "icon.svg"
+    "16": "assets/icon.svg",
+    "32": "assets/icon.svg",
+    "48": "assets/icon.svg",
+    "128": "assets/icon.svg"
   },
   "permissions": [],
   "host_permissions": [],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';"
   }
 }

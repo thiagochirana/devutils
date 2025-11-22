@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevUtils</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="hero">
+      <div class="badge">BR</div>
+      <div>
+        <p class="title">DevUtils</p>
+        <p class="subtitle">Gerador de dados.</p>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="cnpj" aria-selected="true" aria-controls="panel-cnpj">CNPJ</button>
+      <button class="tab" data-tab="cpf" aria-selected="false" aria-controls="panel-cpf">CPF</button>
+      <button class="tab" data-tab="email" aria-selected="false" aria-controls="panel-email">E-mail</button>
+    </nav>
+
+    <section class="panel" id="panel-cnpj" data-panel="cnpj" role="tabpanel" aria-label="Gerador de CNPJ">
+      <div class="field">
+        <label class="field-label">Modelo</label>
+        <div class="pill-options">
+          <label class="pill">
+            <input type="radio" name="cnpj-mode" value="numeric" checked>
+            <span>Numérico</span>
+          </label>
+          <label class="pill">
+            <input type="radio" name="cnpj-mode" value="alphanumeric">
+            <span>Alfanumérico</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field toggle">
+        <label for="cnpj-mask">Máscara</label>
+        <label class="switch">
+          <input type="checkbox" id="cnpj-mask" checked>
+          <span class="switch-slider"></span>
+          <span class="switch-text">Com máscara</span>
+        </label>
+      </div>
+
+      <div class="output">
+        <input id="cnpj-output" type="text" readonly aria-live="polite">
+        <button class="ghost" data-copy-target="cnpj-output">Copiar</button>
+      </div>
+
+      <button class="primary" id="generate-cnpj">Gerar CNPJ</button>
+    </section>
+
+    <section class="panel hidden" id="panel-cpf" data-panel="cpf" role="tabpanel" aria-label="Gerador de CPF">
+      <div class="field toggle">
+        <label for="cpf-mask">Máscara</label>
+        <label class="switch">
+          <input type="checkbox" id="cpf-mask" checked>
+          <span class="switch-slider"></span>
+          <span class="switch-text">Com máscara</span>
+        </label>
+      </div>
+
+      <div class="output">
+        <input id="cpf-output" type="text" readonly aria-live="polite">
+        <button class="ghost" data-copy-target="cpf-output">Copiar</button>
+      </div>
+
+      <button class="primary" id="generate-cpf">Gerar CPF</button>
+    </section>
+
+    <section class="panel hidden" id="panel-email" data-panel="email" role="tabpanel" aria-label="Gerador de e-mail">
+      <div class="field hint">
+        <p>Gera um e-mail aleatório já no formato válido (usuario@dominio.tld).</p>
+      </div>
+
+      <div class="output">
+        <input id="email-output" type="text" readonly aria-live="polite">
+        <button class="ghost" data-copy-target="email-output">Copiar</button>
+      </div>
+
+      <button class="primary" id="generate-email">Gerar e-mail</button>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

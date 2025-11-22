@@ -1,39 +1,20 @@
-# devutils
+# DevUtils (Chrome Extension)
 
-This template should help get you started developing with Vue 3 in Vite.
+Extensão simples de popup para gerar CNPJ, CPF e e-mail válidos e copiar rapidamente para a área de transferência.
 
-## Recommended IDE Setup
+## Como usar
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+1. Na página `chrome://extensions`, ative o **Modo do desenvolvedor**.
+2. Clique em **Carregar sem compactação** e selecione esta pasta do projeto.
+3. Abra o ícone da extensão na barra do Chrome. Cada aba gera um dado diferente:
+   - **CNPJ:** escolha entre modelo antigo (numérico com dígitos verificadores) ou novo (alfanumérico) e habilite/disable a máscara.
+   - **CPF:** gera um CPF válido; botão para alternar a máscara.
+   - **E-mail:** monta um endereço aleatório já no formato correto.
+4. Use o botão **Copiar** para enviar o valor ao clipboard; o botão confirma o sucesso por alguns segundos.
 
-## Type Support for `.vue` Imports in TS
+## Scripts úteis
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- `npm run build`: não há build; apenas mensagem informativa.
+- `npm run zip`: cria `dist/br-generators.zip` com os arquivos da extensão.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Não há dependências externas ou etapa de compilação; basta abrir o popup e usar.
