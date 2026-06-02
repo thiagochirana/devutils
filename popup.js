@@ -129,7 +129,7 @@ function calculateCpfDigit(digits, factorStart) {
 
 function generateCnpj(isNumeric, withMask) {
   if (!isNumeric) {
-    const base = randomAlphanumericBase(12);
+    const base = `${randomAlphanumericBase(8)}0001`;
     const values = base.split("").map(charValueForCnpj);
     const firstDigit = calculateAlphanumericCnpjDigit(values);
     const secondDigit = calculateAlphanumericCnpjDigit([...values, firstDigit]);
@@ -137,7 +137,7 @@ function generateCnpj(isNumeric, withMask) {
     return withMask ? maskCnpj(cnpj) : cnpj;
   }
 
-  const baseDigits = Array.from({ length: 12 }, () => randomDigit());
+  const baseDigits = [...Array.from({ length: 8 }, () => randomDigit()), 0, 0, 0, 1];
   const firstDigit = calculateCnpjDigit(baseDigits, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
   const secondDigit = calculateCnpjDigit([...baseDigits, firstDigit], [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
 
